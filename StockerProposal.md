@@ -10,6 +10,8 @@ I'd like to add a minigame (perhaps a word scramble/anagram game) in which the u
 
 Proposed game balance(WIP):http://framebox.org/AkKeJ
 
+Home page: http://framebox.org/AkKgd
+
 Materials page: http://framebox.org/AkKfA
 
 Components page: http://framebox.org/AkKfk
