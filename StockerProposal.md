@@ -16,17 +16,17 @@ Components page: http://framebox.org/AkKfk
 
 ### MVP User Stories
 
-As a user, I want to see all purchaseable materials and craftable components.
-As a user, I want to purchase materials indivudally and in bulk, as well as craft components from those materials.
-As a user, I want to craft a PC out of components.
-As a user, I want to sell components and PCs for money.
-As a user, I want my game state to persist based on my login information
+* As a user, I want to see all purchaseable materials and craftable components.
+* As a user, I want to purchase materials indivudally and in bulk, as well as craft components from those materials.
+* As a user, I want to craft a PC out of components.
+* As a user, I want to sell components and PCs for money.
+* As a user, I want my game state to persist based on my login information
 
 ### Post MVP
 
-As a user, I want to play a minigame to earn a small amount of money.
-As a user, I want to hire "managers" to automate purchasing of materials for component crafting.
-As a user, I want to navigate and use all of the above features on mobile phone.
+* As a user, I want to play a minigame to earn a small amount of money.
+* As a user, I want to hire "managers" to automate purchasing of materials for component crafting.
+* As a user, I want to navigate and use all of the above features on mobile phone.
 
 ## API
 
