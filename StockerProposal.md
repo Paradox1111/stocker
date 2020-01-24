@@ -2,9 +2,9 @@
 
 ## Project Description
 
-Stocker is a PC building tycoon game/stock keeping simulator. In the game the user will purchase materials to craft PC parts and ultimately a complete PC. The user will sell parts and complete PC's for more money to buy more materials. 
+Stocker is a PC building tycoon game/stock keeping simulator. In the game the user will purchase materials to craft PC parts and ultimately a complete PC. The user will sell parts and complete PC's for money to buy materials. 
 
-I'd like to add a minigame (perhaps a word scramble/anagram game) in which the user can earn a small amount of money for nothing in case they spend themselves into a unplayable situation. In addition I'd like for the user to be able to spend money to hire "managers" that automatically purchase certain requisite materials for crafting. (i.e the 'wire' manager purchases all the wire the user would need for any crafting job the user has queued.)
+I'd like to add a minigame (perhaps a word scramble/anagram game) in which the user can earn a small amount of money for nothing in case they spend themselves into a unplayable situation. In addition I'd like for the user to be able to spend money to hire "managers" that automatically purchase certain requisite materials for crafting. (i.e the 'circuitry' manager purchases all the circuitry the user would need for any crafting job the user has queued.)
 
 ## Wireframes
 
