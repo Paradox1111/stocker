@@ -10,7 +10,7 @@ I'd like to add a minigame (perhaps a word scramble/anagram game) in which the u
 
 ## Wireframes
 
-Links to your hand drawn or digital wireframes.
+Propsed game balance(WIP):http://framebox.org/AkKeJ
 
 
 
