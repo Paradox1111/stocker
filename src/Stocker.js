@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link, Switch } from "react-router-dom";
 
 import "./Stocker.css";
 
@@ -8,7 +9,11 @@ function Stocker() {
 	return (
 		<div className="Stocker">
 			<header>
-				<nav></nav>
+				<nav>
+					<Link to="/">Home</Link>
+					<Link to="/Components">Components</Link>
+					<Link to="/Materials">Materials</Link>
+				</nav>
 			</header>
 			<h2 className="money">Money: ${money}</h2>
 		</div>

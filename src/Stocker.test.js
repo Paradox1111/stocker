@@ -1,9 +1,27 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import App from "./App";
+import { shallow } from "enzyme";
+import { Link } from "react-router-dom";
+import Stocker from "./Stocker";
 
-test("renders learn react link", () => {
-	describe("when Stocker loads", () => {
-		it("displays navBar");
+describe("when Stocker loads", () => {
+	let component;
+	beforeEach(() => {
+		component = shallow(<Stocker />);
+	});
+	it("displays money", () => {
+		expect(component.contains(<h2 className="money">Money: $500</h2>)).toBe(
+			true
+		);
+	});
+	it("displays nav bar", () => {
+		expect(
+			component.contains(
+				<nav>
+					<Link to="/">Home</Link>
+					<Link to="/Components">Components</Link>
+					<Link to="/Materials">Materials</Link>
+				</nav>
+			)
+		).toBe(true);
 	});
 });
