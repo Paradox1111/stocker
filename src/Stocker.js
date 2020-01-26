@@ -17,13 +17,12 @@ function Stocker() {
 				</nav>
 				<h2 className="money">Money: ${money}</h2>
 			</header>
-			<main>
-				<Switch>
-					<Route path="/" component={Stocker} />
-					<Route path="/Components" component={Components} />
-					<Route path="/Materials" component={Materials} />
-				</Switch>
-			</main>
+			<Switch>
+				<Route path="/" />
+				<Route path="/Components" component={Components} />
+				<Route path="/Materials" component={Materials} />
+			</Switch>
+			<main></main>
 		</div>
 	);
 }

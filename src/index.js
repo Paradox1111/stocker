@@ -9,6 +9,7 @@ ReactDOM.render(
 	<Router>
 		<Stocker />
 	</Router>,
+
 	document.getElementById("root")
 );
 
