@@ -4,9 +4,10 @@ import { Link, Switch, Route } from "react-router-dom";
 import Components from "./Comps/Components/Components";
 import Materials from "./Comps/Materials/Materials";
 import "./Stocker.css";
+import Unsplash from 'unsplash-js'
 
 function Stocker() {
-	const [money, setMoney] = useState(500);
+	const [money, setMoney] = useState(200);
 	//Materials
 	const [transistors, setTransistors] = useState({ type: "transistors", stock: 0, price: 5 });
 	const [circuitry, setCircuitry] = useState({ type: "circuitry", stock: 0, price: 3 });
@@ -26,37 +27,67 @@ function Stocker() {
 		[fans, setFans],
 		[heatSinks, setHeatSinks],
 		[hdds, setHdds],
-		[cases, setCases]
-]
-	// let mats = {
-	// 	transistors: {transistors: transistors, setTransistors: setTransistors},
-	// 	circuitry: {circuitry: circuitry, setCircuitry: setCircuitry},
-	// 	ports: {ports: ports, setPorts: setPorts},
-	// 	pcbs: {pcbs: pcbs, setPcbs: setPcbs},
-	// 	flashMem: {flashMem: flashMem, setFlashMem: setFlashMem},
-	// 	fans: {fans: fans, setFans: setFans},
-	// 	heatSinks: {heatSinks:heatSinks, setHeatSinks: setHeatSinks},
-	// 	hdds: {hdds: hdds, setHdds: setHdds},
-	// 	cases: {cases: cases, setCases: setCases}
-	// }
+		[cases, setCases]]
 
 	//components
-	const [mobo, setMobo] = useState({ stock: 0, price: 50 });
-	const [cpu, setCpu] = useState({ stock: 0, price: 45 });
-	const [gpu, setGpu] = useState({ stock: 0, price: 50 });
-	const [psu, setPsu] = useState({ stock: 0, price: 45 });
-	const [storage, setStorage] = useState({ stock: 0, price: 35 });
-	const [ram, setRam] = useState({ stock: 0, price: 25 });
-	let comps = {
-		mobo: mobo,
-		cpu: cpu,
-		gpu: gpu,
-		psu: psu,
-		storage: storage,
-		ram: ram
-	}
+	const [mobo, setMobo] = useState({ type: "mobo", stock: 0, price: 50, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "circuitry", num: 2},
+		{type: "ports", num: 2},
+		{type: "transistors", num: 2},
+		{type: "heatSinks", num: 2}
+	 ] });
+	const [cpu, setCpu] = useState({ type: "cpu", stock: 0, price: 45, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "circuitry", num: 1},
+		{type: "transistors", num: 5}
+	 ] });
+	const [gpu, setGpu] = useState({ type: "gpu", stock: 0, price: 50, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "circuitry", num: 1},
+		{type: "ports", num: 2},
+		{type: "transistors", num: 2},
+		{type: "heatSinks", num: 1},
+		{type: "fans", num: 1}
+	 ] });
+	const [psu, setPsu] = useState({ type: "psu", stock: 0, price: 45, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "circuitry", num: 2},
+		{type: "ports", num: 2},
+		{type: "fans", num: 1},
+		{type: "heatSinks", num: 1}
+	] });
+	const [storage, setStorage] = useState({ type: "storage", stock: 0, price: 35, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "hdds", num: 1},
+		{type: "ports", num: 1}
+	 ] });
+	const [ram, setRam] = useState({ type: "ram", stock: 0, price: 25, reqMats: [
+		{type: "pcbs", num: 1},
+		{type: "flashMem", num: 1}
+	 ] });
+
+	let comps = [
+		[mobo, setMobo],
+		[cpu, setCpu],
+		[gpu, setGpu],
+		[psu, setPsu],
+		[storage, setStorage],
+		[ram, setRam]
+	]
+
 	useEffect(() => {
-		setMoney(200)
+		const key = process.env.REACT_APP_KEY
+		const url = "https://api.unsplash.com/"
+		const unsplash = new Unsplash({accessKey: key})
+
+		// unsplash.search.photos("transistors")
+		// .then(response => response.json())
+		// .then(response=>console.log(response))
+
+		// fetch(`${url}search/photos?&client_id=${key}&query=${'transistors'}`)
+		// .then(response => response.json())
+		// .then(response => console.log(response))
 	}, []);
 	return (
 		<div className="Stocker">
@@ -72,17 +103,12 @@ function Stocker() {
 				<Route exact path="/" />
 				<Route
 					path="/Components"
-					render={() => <Components comps={comps} funcs={{
-					setMobo: setMobo,
-					setCpu: setCpu,
-					setGpu: setGpu,
-					setPsu: setPsu,
-					setStorage: setStorage,
-					setRam: setRam}}/>}
+					render={() => <Components mats={mats} comps={comps} money={[money, setMoney]}
+					/>}
 				/>
 				<Route
 					path="/Materials"
-					render={() => <Materials mats={mats} setMoney={setMoney} setTransistors={setTransistors} setCircuitry={setCircuitry} setPorts={setPorts} setPcbs={setPcbs} setFlashMem={setFlashMem} setHeatSinks={setHeatSinks} setHdds={setHdds} setCases={setCases} />}
+					render={() => <Materials mats={mats} money={[money, setMoney]} />}
 				/>
 			</Switch>
 			<main></main>
