@@ -8,3 +8,10 @@ nav {
 header h2 {
 	text-align: center;
 }
+.Components{
+	column-count: 1
+}
+.Component p {
+	margin: -2px;
+	margin-left: 1px;
+}

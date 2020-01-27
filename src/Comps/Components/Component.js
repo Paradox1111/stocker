@@ -8,8 +8,6 @@ function Component(props) {
 	const setMoney = props.money[1]
 	const reqMats = props.comp[0].reqMats
 	const mats = props.mats
-	console.log(props.comp[0])
-	console.log(mats)
 
 	function craftOne() {
 		//check for and reduce requisite mats
@@ -27,7 +25,6 @@ function Component(props) {
 		}
 		//if there are as many available materials as required materials:
 		if(availMats === reqMats.length){
-			console.log('got enough')
 			for(let i=0; i<reqMats.length; i++){
 				for(let j=0; j<mats.length; j++){
 					//if a material matches required material and is in stock
@@ -44,7 +41,7 @@ function Component(props) {
 	}
 	function sellOne() {
 		if(stock>=1){
-			setComp({type: type, stock: (stock-1), price: price})
+			setComp({...props.comp[0], stock: (stock-1)})
 			setMoney(money+(price))
 		}
 	}
@@ -55,11 +52,17 @@ function Component(props) {
 	// 	.then(response => response.json())
 	// 	.then(response => console.log(response))
 	// }, []);
-	return <div className="Material">
+	const requirements = reqMats.map(mat => 
+		<p key={mat.type}>{mat.type}: {mat.num}</p>
+	)
+	return <div className="Component">
 		<img src="" alt=""/>
-		{type}: {stock}
+		<strong>{type}:</strong> {stock}
 		<br/>
 		${price}
+		<br/>
+		Required materials:
+		{requirements}
 		<br/>
 		<button onClick={craftOne}>Craft +1</button>
 		<button onClick={sellOne}>Sell -1 +${price}</button>
