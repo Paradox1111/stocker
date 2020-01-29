@@ -28,6 +28,8 @@ function formatPartType(partType) {
 			return "Heat Sinks";
 		case "hdds":
 			return "Hard Drive Disks";
+		case "case":
+			return "Cases";
 		case "cases":
 			return "Cases";
 		case "pc":

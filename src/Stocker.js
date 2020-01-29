@@ -5,10 +5,10 @@ import Components from "./Comps/Components/Components";
 import Materials from "./Comps/Materials/Materials";
 import formatPartType from "./helpers/formatPartType";
 import "./Stocker.css";
-import Unsplash from "unsplash-js";
+import Home from "./Comps/Home/Home";
 
 function Stocker() {
-	const [money, setMoney] = useState(200);
+	const [money, setMoney] = useState(1000);
 	//Materials
 	const [transistors, setTransistors] = useState({
 		type: "transistors",
@@ -136,30 +136,28 @@ function Stocker() {
 			{ type: "psu", num: 1 },
 			{ type: "storage", num: 1 },
 			{ type: "ram", num: 1 },
-			{ type: "case", num: 1 },
+			{ type: "cases", num: 1 },
 			{ type: "fans", num: 4 }
 		]
 	});
 
+	//fetch all image urls
+	const [images, setImages] = useState({ nothing: undefined });
 	useEffect(() => {
-		const key = process.env.REACT_APP_KEY;
-		const url = "https://api.unsplash.com/";
-		const unsplash = new Unsplash({ accessKey: key });
-
-		// unsplash.search.photos("transistors")
-		// .then(response => response.json())
-		// .then(response=>console.log(response))
-
-		// fetch(`${url}search/photos?&client_id=${key}&query=${'transistors'}`)
-		// .then(response => response.json())
-		// .then(response => console.log(response))
+		const key = `Client-ID ${process.env.REACT_APP_IMGUR_KEY}`;
+		const url = `https://api.imgur.com/3/account/Paradoxicalityman/gallery_favorites/`;
+		fetch(url, {
+			method: "GET",
+			headers: new Headers({
+				Authorization: key
+			})
+		})
+			.then(response => response.json())
+			.then(response => {
+				setImages(response);
+				console.log(images);
+			});
 	}, []);
-
-	const requirements = pcs.reqMats.map(mat => (
-		<p key={mat.type}>
-			{formatPartType(mat.type)}: {mat.num}
-		</p>
-	));
 
 	return (
 		<div className="Stocker">
@@ -171,31 +169,37 @@ function Stocker() {
 				</nav>
 				<h2 className="money">Money: ${money}</h2>
 			</header>
-			<Switch>
-				<Route exact path="/" />
-				<Route
-					path="/Components"
-					render={() => (
-						<Components mats={mats} comps={comps} money={[money, setMoney]} />
-					)}
-				/>
-				<Route
-					path="/Materials"
-					render={() => <Materials mats={mats} money={[money, setMoney]} />}
-				/>
-			</Switch>
 			<main>
-				<div className="pc">
-					<img src="" alt="" />
-					<strong>{formatPartType(pcs.type)}:</strong> {pcs.stock}
-					<br />${pcs.price}
-					<br />
-					Required materials:
-					{requirements}
-					<br />
-					<button>Craft +1</button>
-					<button>Sell -1 +${pcs.price}</button>
-				</div>
+				<Switch>
+					<Route
+						path="/Components"
+						render={() => (
+							<Components
+								mats={mats}
+								comps={comps}
+								images={images}
+								money={[money, setMoney]}
+							/>
+						)}
+					/>
+					<Route
+						path="/Materials"
+						render={() => <Materials mats={mats} money={[money, setMoney]} />}
+					/>
+					<Route
+						path="/"
+						render={() => (
+							<Home
+								comps={comps}
+								mats={mats}
+								images={images}
+								pcs={pcs}
+								setPcs={setPcs}
+								money={[money, setMoney]}
+							/>
+						)}
+					/>
+				</Switch>
 			</main>
 		</div>
 	);

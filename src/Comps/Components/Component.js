@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import formatPartType from "../../helpers/formatPartType";
 // import "./Component.css";
+import dotenv from "dotenv";
+dotenv.config();
 
 function Component(props) {
 	const { type, stock, price } = props.comp[0];
@@ -51,25 +53,13 @@ function Component(props) {
 			setMoney(money + price);
 		}
 	}
-	useEffect(() => {
-		const key = `Client-ID ${process.env.REACT_APP_IMGURKEY}`;
-		const url =
-			"https://api.imgur.com/3/account/Paradoxicality/gallery_favorites/";
 
-		fetch(url, {
-			method: "GET",
-			headers: new Headers({
-				Authorization: key
-			})
-		})
-			.then(response => response.json())
-			.then(response => console.log(response));
-	}, []);
 	const requirements = reqMats.map(mat => (
 		<p key={mat.type}>
 			{formatPartType(mat.type)}: {mat.num}
 		</p>
 	));
+
 	return (
 		<div className="Component">
 			<img src="" alt="" />
