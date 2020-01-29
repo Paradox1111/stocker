@@ -20,21 +20,41 @@ function Stocker() {
 		stock: 0,
 		price: 3
 	});
-	const [ports, setPorts] = useState({ type: "ports", stock: 0, price: 5 });
-	const [pcbs, setPcbs] = useState({ type: "pcbs", stock: 0, price: 10 });
+	const [ports, setPorts] = useState({
+		type: "ports",
+		stock: 0,
+		price: 5
+	});
+	const [pcbs, setPcbs] = useState({
+		type: "pcbs",
+		stock: 0,
+		price: 10
+	});
 	const [flashMem, setFlashMem] = useState({
 		type: "flashMem",
 		stock: 0,
 		price: 10
 	});
-	const [fans, setFans] = useState({ type: "fans", stock: 0, price: 5 });
+	const [fans, setFans] = useState({
+		type: "fans",
+		stock: 0,
+		price: 5
+	});
 	const [heatSinks, setHeatSinks] = useState({
 		type: "heatSinks",
 		stock: 0,
 		price: 5
 	});
-	const [hdds, setHdds] = useState({ type: "hdds", stock: 0, price: 15 });
-	const [cases, setCases] = useState({ type: "cases", stock: 0, price: 15 });
+	const [hdds, setHdds] = useState({
+		type: "hdds",
+		stock: 0,
+		price: 15
+	});
+	const [cases, setCases] = useState({
+		type: "cases",
+		stock: 0,
+		price: 15
+	});
 	let mats = [
 		[transistors, setTransistors],
 		[circuitry, setCircuitry],
@@ -115,7 +135,7 @@ function Stocker() {
 		]
 	});
 
-	let comps = [
+	const comps = [
 		[mobo, setMobo],
 		[cpu, setCpu],
 		[gpu, setGpu],
@@ -123,7 +143,6 @@ function Stocker() {
 		[storage, setStorage],
 		[ram, setRam]
 	];
-
 	//Complete PC
 	const [pcs, setPcs] = useState({
 		type: "pc",
@@ -142,7 +161,28 @@ function Stocker() {
 	});
 
 	//fetch all image urls
-	const [images, setImages] = useState({ nothing: undefined });
+	// const [images, setImages] = useState(undefined);
+	// useEffect(() => {
+	// 	const key = `Client-ID ${process.env.REACT_APP_IMGUR_KEY}`;
+	// 	const url = `https://api.imgur.com/3/account/Paradoxicalityman/gallery_favorites/`;
+	// 	fetch(url, {
+	// 		method: "GET",
+	// 		headers: new Headers({
+	// 			Authorization: key
+	// 		})
+	// 	})
+	// 		.then(response => response.json())
+	// 		.then(response => {
+	// 			localStorage.setItem("images", JSON.stringify(response.data));
+	// 			let data = localStorage.getItem("images");
+	// 			data = JSON.parse(data);
+	// 			setImages([...data]);
+	// 		});
+	// }, []);
+	// console.log(images);
+
+	//fetch all image urls
+	const [images, setImages] = useState(undefined);
 	useEffect(() => {
 		const key = `Client-ID ${process.env.REACT_APP_IMGUR_KEY}`;
 		const url = `https://api.imgur.com/3/account/Paradoxicalityman/gallery_favorites/`;
@@ -154,10 +194,68 @@ function Stocker() {
 		})
 			.then(response => response.json())
 			.then(response => {
-				setImages(response);
-				console.log(images);
+				setImages(response.data);
+				console.log(response);
 			});
 	}, []);
+
+	//retrieve locally stored save state (if any) and overwrite default values
+	useEffect(() => {
+		let data = localStorage.getItem("save-state");
+		try {
+			data = JSON.parse(data);
+		} catch (error) {
+			console.log(error);
+		}
+		if (!data === undefined) {
+			setPcs({ ...data.pcs });
+			setMoney(data.money);
+			//components
+			setCpu({ ...data.cpu });
+			setMobo({ ...data.mobo });
+			setGpu({ ...data.gpu });
+			setPsu({ ...data.psu });
+			setStorage({ ...data.storage });
+			setRam({ ...data.ram });
+			//materials
+			setRam({ ...data.ram });
+			setCircuitry({ ...data.circuitry });
+			setTransistors({ ...data.transistors });
+			setPorts({ ...data.ports });
+			setPcbs({ ...data.pcbs });
+			setFlashMem({ ...data.flashMem });
+			setFans({ ...data.fans });
+			setHeatSinks({ ...data.heatSinks });
+			setHdds({ ...data.hdds });
+			setCases({ ...data.cases });
+		}
+	}, []);
+
+	//save game state to local storage
+	useEffect(() => {
+		localStorage.setItem(
+			"save-state",
+			JSON.stringify({
+				mobo,
+				cpu,
+				gpu,
+				psu,
+				storage,
+				ram,
+				pcs,
+				money,
+				transistors,
+				circuitry,
+				ports,
+				pcbs,
+				flashMem,
+				fans,
+				heatSinks,
+				hdds,
+				cases
+			})
+		);
+	});
 
 	return (
 		<div className="Stocker">
@@ -171,17 +269,19 @@ function Stocker() {
 			</header>
 			<main>
 				<Switch>
-					<Route
-						path="/Components"
-						render={() => (
-							<Components
-								mats={mats}
-								comps={comps}
-								images={images}
-								money={[money, setMoney]}
-							/>
-						)}
-					/>
+					{images && comps && (
+						<Route
+							path="/Components"
+							render={() => (
+								<Components
+									mats={mats}
+									comps={comps}
+									images={images}
+									money={[money, setMoney]}
+								/>
+							)}
+						/>
+					)}
 					<Route
 						path="/Materials"
 						render={() => <Materials mats={mats} money={[money, setMoney]} />}

@@ -16,21 +16,18 @@ function Material(props) {
 		setMat({ type: type, stock: stock + 5, price: price });
 		setMoney(money - price * 5);
 	}
-	// useEffect(() => {
-	// 	const key = process.env.REACT_APP_KEY
-	// 	const url = "https://api.unsplash.com/"
-	// 	fetch(`${url}search/photos?&query=${type}&AccessKey=${key}`)
-	// 	.then(response => response.json())
-	// 	.then(response => console.log(response))
-	// }, []);
 	return (
 		<div className="Material">
 			<img src="" alt="" />
 			<strong>{formatPartType(type)}:</strong> {stock}
 			<br />${price}
 			<br />
-			<button onClick={buyOne}>Buy +1 ${price}</button>
-			<button onClick={buyFive}>Buy +5 ${price * 5}</button>
+			<button className="buy" onClick={buyOne}>
+				Buy +1 ${price}
+			</button>
+			<button className="buy" onClick={buyFive}>
+				Buy +5 ${price * 5}
+			</button>
 		</div>
 	);
 }

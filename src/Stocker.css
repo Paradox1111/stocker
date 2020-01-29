@@ -12,11 +12,38 @@ header h2 {
 	column-count: 1;
 }
 .Component {
-	padding: 10px;
+	padding: 0.5em;
 }
 .Component p {
 	margin: -0.1em;
 }
 .Material {
 	padding: 10px;
+}
+.pc {
+	text-align: center;
+}
+.newGame {
+	justify-content: center;
+	background-color: darkslategray;
+	color: red;
+}
+.retire {
+	color: blue;
+	background-color: yellow;
+}
+.sell {
+	color: black;
+	background-color: green;
+}
+.craft {
+	color: blue;
+	background-color: orange;
+}
+.buy {
+	color: yellow;
+	background-color: purple;
+}
+img {
+	width: 200px;
 }

@@ -59,18 +59,23 @@ function Component(props) {
 			{formatPartType(mat.type)}: {mat.num}
 		</p>
 	));
-
+	console.log(props.image);
 	return (
 		<div className="Component">
-			<img src="" alt="" />
+			{props.image && <img src={props.image.link} alt="" />}
+			<br />
 			<strong>{formatPartType(type)}:</strong> {stock}
 			<br />${price}
 			<br />
 			Required materials:
 			{requirements}
 			<br />
-			<button onClick={craftOne}>Craft +1</button>
-			<button onClick={sellOne}>Sell -1 +${price}</button>
+			<button className="craft" onClick={craftOne}>
+				Craft +1
+			</button>
+			<button className="sell" onClick={sellOne}>
+				Sell -1 +${price}
+			</button>
 		</div>
 	);
 }

@@ -63,7 +63,6 @@ function Home(props) {
 					) {
 						//decrement current component by required amount
 						let setComp = comps[j][1];
-						console.log(comps[j][0]);
 						setComp({
 							...comps[j][0],
 							stock: comps[j][0].stock - reqMats[i].num
@@ -77,7 +76,15 @@ function Home(props) {
 	function sellOne() {
 		if (pcs.stock >= 1) {
 			setPcs({ ...pcs, stock: stock - 1 });
+			money[1](money[0] + pcs.price);
 		}
+	}
+	function newGame() {
+		localStorage.setItem("save-state", undefined);
+		window.location.reload();
+	}
+	function retire() {
+		newGame();
 	}
 	const requirements = pcs.reqMats.map(mat => (
 		<p key={mat.type}>
@@ -85,16 +92,29 @@ function Home(props) {
 		</p>
 	));
 	return (
-		<div className="pc">
-			<img src="" alt="" />
-			<strong>{formatPartType(pcs.type)}:</strong> {pcs.stock}
-			<br />${pcs.price}
+		<div>
+			<div className="pc">
+				<img src="" alt="" />
+				<strong>{formatPartType(pcs.type)}:</strong> {pcs.stock}
+				<br />${pcs.price}
+				<br />
+				Required materials:
+				{requirements}
+				<br />
+				<button className="craft" onClick={craftOne}>
+					Craft +1
+				</button>
+				<button className="sell" onClick={sellOne}>
+					Sell -1 +${pcs.price}
+				</button>
+			</div>
+			<button className="retire" onClick={retire}>
+				Retirement!
+			</button>
 			<br />
-			Required materials:
-			{requirements}
-			<br />
-			<button onClick={craftOne}>Craft +1</button>
-			<button>Sell -1 +${pcs.price}</button>
+			<button className="newGame" onClick={newGame}>
+				New game
+			</button>
 		</div>
 	);
 }
