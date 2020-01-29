@@ -59,7 +59,6 @@ function Component(props) {
 			{formatPartType(mat.type)}: {mat.num}
 		</p>
 	));
-	console.log(props.image);
 	return (
 		<div className="Component">
 			{props.image && <img src={props.image.link} alt="" />}

@@ -19,7 +19,6 @@ function Home(props) {
 				) {
 					//increment available materials
 					availMats += 1;
-					console.log(mats[j][0].type + " is available");
 				}
 			}
 		}
@@ -34,7 +33,6 @@ function Home(props) {
 				) {
 					//increment available materials
 					availMats += 1;
-					console.log(comps[j][0].type + " is available");
 				}
 			}
 		}
@@ -108,13 +106,15 @@ function Home(props) {
 					Sell -1 +${pcs.price}
 				</button>
 			</div>
-			<button className="retire" onClick={retire}>
-				Retirement!
-			</button>
-			<br />
-			<button className="newGame" onClick={newGame}>
-				New game
-			</button>
+			<div className="homeBtns">
+				<button className="retire" onClick={retire}>
+					Retirement! -$10000 (Resets all progress!)
+				</button>
+				<br />
+				<button className="newGame" onClick={newGame}>
+					New game (Resets all progress!)
+				</button>
+			</div>
 		</div>
 	);
 }

@@ -161,27 +161,6 @@ function Stocker() {
 	});
 
 	//fetch all image urls
-	// const [images, setImages] = useState(undefined);
-	// useEffect(() => {
-	// 	const key = `Client-ID ${process.env.REACT_APP_IMGUR_KEY}`;
-	// 	const url = `https://api.imgur.com/3/account/Paradoxicalityman/gallery_favorites/`;
-	// 	fetch(url, {
-	// 		method: "GET",
-	// 		headers: new Headers({
-	// 			Authorization: key
-	// 		})
-	// 	})
-	// 		.then(response => response.json())
-	// 		.then(response => {
-	// 			localStorage.setItem("images", JSON.stringify(response.data));
-	// 			let data = localStorage.getItem("images");
-	// 			data = JSON.parse(data);
-	// 			setImages([...data]);
-	// 		});
-	// }, []);
-	// console.log(images);
-
-	//fetch all image urls
 	const [images, setImages] = useState(undefined);
 	useEffect(() => {
 		const key = `Client-ID ${process.env.REACT_APP_IMGUR_KEY}`;
@@ -195,67 +174,68 @@ function Stocker() {
 			.then(response => response.json())
 			.then(response => {
 				setImages(response.data);
-				console.log(response);
 			});
 	}, []);
 
-	//retrieve locally stored save state (if any) and overwrite default values
-	useEffect(() => {
-		let data = localStorage.getItem("save-state");
-		try {
-			data = JSON.parse(data);
-		} catch (error) {
-			console.log(error);
-		}
-		if (!data === undefined) {
-			setPcs({ ...data.pcs });
-			setMoney(data.money);
-			//components
-			setCpu({ ...data.cpu });
-			setMobo({ ...data.mobo });
-			setGpu({ ...data.gpu });
-			setPsu({ ...data.psu });
-			setStorage({ ...data.storage });
-			setRam({ ...data.ram });
-			//materials
-			setRam({ ...data.ram });
-			setCircuitry({ ...data.circuitry });
-			setTransistors({ ...data.transistors });
-			setPorts({ ...data.ports });
-			setPcbs({ ...data.pcbs });
-			setFlashMem({ ...data.flashMem });
-			setFans({ ...data.fans });
-			setHeatSinks({ ...data.heatSinks });
-			setHdds({ ...data.hdds });
-			setCases({ ...data.cases });
-		}
-	}, []);
+	// //retrieve locally stored save state (if any) and overwrite default values
+	// useEffect(() => {
+	// 	let data = localStorage.getItem("save-state");
 
-	//save game state to local storage
-	useEffect(() => {
-		localStorage.setItem(
-			"save-state",
-			JSON.stringify({
-				mobo,
-				cpu,
-				gpu,
-				psu,
-				storage,
-				ram,
-				pcs,
-				money,
-				transistors,
-				circuitry,
-				ports,
-				pcbs,
-				flashMem,
-				fans,
-				heatSinks,
-				hdds,
-				cases
-			})
-		);
-	});
+	// 	try {
+	// 		data = JSON.parse(data);
+
+	// 		if (!data.money === undefined) {
+	// 			setPcs({ ...data.pcs });
+	// 			setMoney(data.money);
+	// 			//components
+	// 			setCpu({ ...data.cpu });
+	// 			setMobo({ ...data.mobo });
+	// 			setGpu({ ...data.gpu });
+	// 			setPsu({ ...data.psu });
+	// 			setStorage({ ...data.storage });
+	// 			setRam({ ...data.ram });
+	// 			//materials
+	// 			setRam({ ...data.ram });
+	// 			setCircuitry({ ...data.circuitry });
+	// 			setTransistors({ ...data.transistors });
+	// 			setPorts({ ...data.ports });
+	// 			setPcbs({ ...data.pcbs });
+	// 			setFlashMem({ ...data.flashMem });
+	// 			setFans({ ...data.fans });
+	// 			setHeatSinks({ ...data.heatSinks });
+	// 			setHdds({ ...data.hdds });
+	// 			setCases({ ...data.cases });
+	// 		}
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }, []);
+
+	// //save game state to local storage
+	// useEffect(() => {
+	// 	localStorage.setItem(
+	// 		"save-state",
+	// 		JSON.stringify({
+	// 			mobo,
+	// 			cpu,
+	// 			gpu,
+	// 			psu,
+	// 			storage,
+	// 			ram,
+	// 			pcs,
+	// 			money,
+	// 			transistors,
+	// 			circuitry,
+	// 			ports,
+	// 			pcbs,
+	// 			flashMem,
+	// 			fans,
+	// 			heatSinks,
+	// 			hdds,
+	// 			cases
+	// 		})
+	// 	);
+	// });
 
 	return (
 		<div className="Stocker">

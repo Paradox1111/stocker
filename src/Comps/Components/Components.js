@@ -3,14 +3,11 @@ import Component from "./Component";
 // import "./Components.css";
 
 function Components(props) {
-	console.log(props.comps);
 	const { images, comps } = props;
-	// console.log(images);
-	// images.map(image => {
-	// 	console.log(image);
-	// });
+	let image = { undefined };
 	let components = comps.map(comp => {
-		let image = { undefined };
+		console.log(comp[0].type);
+		console.log(images);
 		switch (comp[0].type) {
 			case "ram":
 				image = images[0];
@@ -18,7 +15,7 @@ function Components(props) {
 			case "gpu":
 				image = images[1];
 				break;
-			case "hdd":
+			case "storage":
 				image = images[2];
 				break;
 			case "psu":
@@ -34,6 +31,7 @@ function Components(props) {
 				image = undefined;
 				break;
 		}
+		console.log(image);
 		return (
 			<Component
 				key={comp[0].type}
@@ -44,7 +42,11 @@ function Components(props) {
 			/>
 		);
 	});
-	return <div className="Components">{components}</div>;
+	if (!image || !comps) {
+		return null;
+	} else {
+		return <div className="Components">{components}</div>;
+	}
 }
 
 export default Components;

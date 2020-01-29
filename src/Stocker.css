@@ -1,39 +1,64 @@
+body {
+	background-color: lightblue;
+}
 nav {
 	display: flex;
 	justify-content: space-around;
-	background-color: lightblue;
-	color: red;
+	background-color: orange;
+	border: 5px solid darkorange;
+	color: blue;
 	font-size: 2em;
+	padding: 0.5em;
+}
+.homeBtns {
+	text-align: center;
+	margin: 3em;
+}
+.newGame {
+	background-color: darkslategray;
+	color: red;
+	border: 3px solid darkred;
+}
+.retire {
+	color: blue;
+	background-color: yellow;
+	margin: 1em;
+	padding: 10px;
+	border: 5px solid gold;
+}
+a:hover {
+	opacity: 0.5;
+}
+a:active {
+	opacity: 1.5;
 }
 header h2 {
 	text-align: center;
 }
 .Components {
-	column-count: 1;
+	column-count: 3;
+	text-align: center;
 }
 .Component {
 	padding: 0.5em;
+	break-inside: avoid;
 }
 .Component p {
 	margin: -0.1em;
 }
+.Materials {
+	column-count: 3;
+	text-align: center;
+}
 .Material {
 	padding: 10px;
+	break-inside: avoid;
 }
 .pc {
 	text-align: center;
 }
-.newGame {
-	justify-content: center;
-	background-color: darkslategray;
-	color: red;
-}
-.retire {
-	color: blue;
-	background-color: yellow;
-}
 .sell {
-	color: black;
+	color: yellow;
 	background-color: green;
 }
 .craft {
@@ -41,9 +66,25 @@ header h2 {
 	background-color: orange;
 }
 .buy {
-	color: yellow;
-	background-color: purple;
+	color: purple;
+	background-color: yellow;
 }
 img {
 	width: 200px;
+}
+@media (max-width: 600px) {
+	.Materials {
+		column-count: 2;
+	}
+	.Components {
+		column-count: 2;
+	}
+}
+@media (max-width: 350px) {
+	.Materials {
+		column-count: 1;
+	}
+	.Components {
+		column-count: 1;
+	}
 }
