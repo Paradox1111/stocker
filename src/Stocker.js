@@ -176,63 +176,6 @@ function Stocker() {
 			});
 	}, []);
 
-	// //retrieve locally stored save state (if any) and overwrite default values
-	// useEffect(() => {
-	// 	let data = localStorage.getItem("save-state");
-	// 	if (!data === { undefined }) {
-	// 		data = JSON.parse(data);
-	// 	}
-
-	// 	if (!data === { undefined } && data.money) {
-	// 		setPcs({ ...data.pcs });
-	// 		setMoney(data.money);
-	// 		//components
-	// 		setCpu({ ...data.cpu });
-	// 		setMobo({ ...data.mobo });
-	// 		setGpu({ ...data.gpu });
-	// 		setPsu({ ...data.psu });
-	// 		setStorage({ ...data.storage });
-	// 		setRam({ ...data.ram });
-	// 		//materials
-	// 		setRam({ ...data.ram });
-	// 		setCircuitry({ ...data.circuitry });
-	// 		setTransistors({ ...data.transistors });
-	// 		setPorts({ ...data.ports });
-	// 		setPcbs({ ...data.pcbs });
-	// 		setFlashMem({ ...data.flashMem });
-	// 		setFans({ ...data.fans });
-	// 		setHeatSinks({ ...data.heatSinks });
-	// 		setHdds({ ...data.hdds });
-	// 		setCases({ ...data.cases });
-	// 	}
-	// }, []);
-
-	// //save game state to local storage
-	// useEffect(() => {
-	// 	localStorage.setItem(
-	// 		"save-state",
-	// 		JSON.stringify({
-	// 			mobo,
-	// 			cpu,
-	// 			gpu,
-	// 			psu,
-	// 			storage,
-	// 			ram,
-	// 			pcs,
-	// 			money,
-	// 			transistors,
-	// 			circuitry,
-	// 			ports,
-	// 			pcbs,
-	// 			flashMem,
-	// 			fans,
-	// 			heatSinks,
-	// 			hdds,
-	// 			cases
-	// 		})
-	// 	);
-	// });
-
 	return (
 		<div className="Stocker">
 			<header>
