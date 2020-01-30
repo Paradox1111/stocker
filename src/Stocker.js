@@ -271,7 +271,6 @@ function Stocker() {
 							<Home
 								comps={comps}
 								mats={mats}
-								images={images}
 								pcs={pcs}
 								setPcs={setPcs}
 								money={[money, setMoney]}

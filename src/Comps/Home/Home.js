@@ -2,7 +2,7 @@ import React from "react";
 import formatPartType from "../../helpers/formatPartType";
 
 function Home(props) {
-	const { pcs, images, money, setPcs, mats, comps } = props;
+	const { pcs, money, setPcs, mats, comps } = props;
 
 	const { reqMats, stock } = pcs;
 

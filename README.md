@@ -1,16 +1,32 @@
-#Stocker
-##Description
-Stocker is a tycoon game that is played in the context of a stock keeping application. The user starts with a $100 and, through buying materials and crafting PCs and components, accrues enough wealth to retire ($10000).
+# Stocker
 
-Home page screenshot: https://imgur.com/vuIuUCf
-Components page screenshot: https://imgur.com/N61QW4p
-Materials page screenshot: https://imgur.com/fVxwsma
+## Description
 
-##Technologies Used
+Stocker is a PC building tycoon game. The user starts with a small amount of money and purchases materials with which to cract components and PCs. Components and PCs are sold for more money to buy materials and with the eventual goal of earning \$10,000 to retire. (hah!)
+
+- Home page screenshot: https://imgur.com/vuIuUCf
+- Components page screenshot: https://imgur.com/N61QW4p
+- Materials page screenshot: https://imgur.com/fVxwsma
+
+## Technologies Used
 
 - JavaScript
 - HTML
 - CSS
-- Markdown
 - React (router & dom)
 - Imgur API
+- Markdown
+
+## Getting Started
+
+Follow the link to the hosted app on Heroku, or
+
+Fork and clone the repository, then run npm install and npm start in the root directory
+
+Use your cunning intellect to determine the most cost-effective component to produce and sell! Requirements for crafting are listed on the components and home pages, materials can be purchased on the Materials page.
+If you run out of money you can start a new game on the Home page.
+
+## Contribution Guidelines
+
+If you'd like to contribute to this application, feel free to make a pull request!
+Any suggestions or bug reports are welcome in the repository issues tab.
