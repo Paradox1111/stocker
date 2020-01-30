@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import formatPartType from "../../helpers/formatPartType";
-// import "./Component.css";
-import dotenv from "dotenv";
-dotenv.config();
 
 function Component(props) {
 	const { type, stock, price } = props.comp[0];
@@ -61,7 +58,7 @@ function Component(props) {
 	));
 	return (
 		<div className="Component">
-			{props.image && <img src={props.image.link} alt="" />}
+			{props.image && <img src={props.image.link} alt={props.image.title} />}
 			<br />
 			<strong>{formatPartType(type)}:</strong> {stock}
 			<br />${price}

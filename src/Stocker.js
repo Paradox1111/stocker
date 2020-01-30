@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import Components from "./Comps/Components/Components";
 import Materials from "./Comps/Materials/Materials";
-import formatPartType from "./helpers/formatPartType";
 import "./Stocker.css";
 import Home from "./Comps/Home/Home";
 

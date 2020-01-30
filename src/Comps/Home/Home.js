@@ -82,7 +82,9 @@ function Home(props) {
 		window.location.reload();
 	}
 	function retire() {
-		newGame();
+		if (money[0] >= 10000) {
+			newGame();
+		}
 	}
 	const requirements = pcs.reqMats.map(mat => (
 		<p key={mat.type}>

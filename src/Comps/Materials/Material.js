@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import formatPartType from "../../helpers/formatPartType";
-// import "./Material.css";
 
 function Material(props) {
 	const { type, stock, price } = props.mat[0];

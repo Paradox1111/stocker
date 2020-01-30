@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Component from "./Component";
-// import "./Components.css";
 
 function Components(props) {
 	const { images, comps } = props;
 	let image = { undefined };
 	let components = comps.map(comp => {
-		console.log(comp[0].type);
-		console.log(images);
 		switch (comp[0].type) {
 			case "ram":
 				image = images[0];
@@ -31,7 +28,6 @@ function Components(props) {
 				image = undefined;
 				break;
 		}
-		console.log(image);
 		return (
 			<Component
 				key={comp[0].type}

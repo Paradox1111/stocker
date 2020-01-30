@@ -34,6 +34,8 @@ function formatPartType(partType) {
 			return "Cases";
 		case "pc":
 			return "Personal Computers";
+		default:
+			return "DEFAULT";
 	}
 }
 
