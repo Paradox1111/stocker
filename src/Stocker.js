@@ -146,7 +146,7 @@ function Stocker() {
 	const [pcs, setPcs] = useState({
 		type: "pc",
 		stock: 0,
-		price: 225,
+		price: 245,
 		reqMats: [
 			{ type: "mobo", num: 1 },
 			{ type: "cpu", num: 1 },

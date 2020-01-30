@@ -21,7 +21,9 @@ Stocker is a PC building tycoon game. The user starts with a small amount of mon
 
 Follow the link to the hosted app on Heroku, or
 
-Fork and clone the repository, then run npm install and npm start in the root directory
+Fork and clone the repository, then run `npm install` and `npm start` in the root directory
+
+Refer to screenshots above to see how the app should appear.
 
 Use your cunning intellect to determine the most cost-effective component to produce and sell! Requirements for crafting are listed on the Components and Home pages, materials can be purchased on the Materials page.
 If you run out of money you can start a new game on the Home page.
