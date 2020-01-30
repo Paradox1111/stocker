@@ -5,6 +5,7 @@ function Components(props) {
 	const { images, comps } = props;
 	let image = { undefined };
 	let components = comps.map(comp => {
+		//assign image depending on comp type
 		switch (comp[0].type) {
 			case "ram":
 				image = images[0];

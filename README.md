@@ -16,6 +16,7 @@ Stocker is a PC building tycoon game. The user starts with a small amount of mon
 - React (router & dom)
 - Imgur API
 - Markdown
+- Git/GitHub
 
 ## Getting Started
 

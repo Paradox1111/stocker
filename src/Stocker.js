@@ -146,7 +146,7 @@ function Stocker() {
 	const [pcs, setPcs] = useState({
 		type: "pc",
 		stock: 0,
-		price: 245,
+		price: 275,
 		reqMats: [
 			{ type: "mobo", num: 1 },
 			{ type: "cpu", num: 1 },
@@ -179,34 +179,31 @@ function Stocker() {
 	// //retrieve locally stored save state (if any) and overwrite default values
 	// useEffect(() => {
 	// 	let data = localStorage.getItem("save-state");
-
-	// 	try {
+	// 	if (!data === { undefined }) {
 	// 		data = JSON.parse(data);
+	// 	}
 
-	// 		if (!data.money === undefined) {
-	// 			setPcs({ ...data.pcs });
-	// 			setMoney(data.money);
-	// 			//components
-	// 			setCpu({ ...data.cpu });
-	// 			setMobo({ ...data.mobo });
-	// 			setGpu({ ...data.gpu });
-	// 			setPsu({ ...data.psu });
-	// 			setStorage({ ...data.storage });
-	// 			setRam({ ...data.ram });
-	// 			//materials
-	// 			setRam({ ...data.ram });
-	// 			setCircuitry({ ...data.circuitry });
-	// 			setTransistors({ ...data.transistors });
-	// 			setPorts({ ...data.ports });
-	// 			setPcbs({ ...data.pcbs });
-	// 			setFlashMem({ ...data.flashMem });
-	// 			setFans({ ...data.fans });
-	// 			setHeatSinks({ ...data.heatSinks });
-	// 			setHdds({ ...data.hdds });
-	// 			setCases({ ...data.cases });
-	// 		}
-	// 	} catch (error) {
-	// 		console.log(error);
+	// 	if (!data === { undefined } && data.money) {
+	// 		setPcs({ ...data.pcs });
+	// 		setMoney(data.money);
+	// 		//components
+	// 		setCpu({ ...data.cpu });
+	// 		setMobo({ ...data.mobo });
+	// 		setGpu({ ...data.gpu });
+	// 		setPsu({ ...data.psu });
+	// 		setStorage({ ...data.storage });
+	// 		setRam({ ...data.ram });
+	// 		//materials
+	// 		setRam({ ...data.ram });
+	// 		setCircuitry({ ...data.circuitry });
+	// 		setTransistors({ ...data.transistors });
+	// 		setPorts({ ...data.ports });
+	// 		setPcbs({ ...data.pcbs });
+	// 		setFlashMem({ ...data.flashMem });
+	// 		setFans({ ...data.fans });
+	// 		setHeatSinks({ ...data.heatSinks });
+	// 		setHdds({ ...data.hdds });
+	// 		setCases({ ...data.cases });
 	// 	}
 	// }, []);
 

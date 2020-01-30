@@ -14,8 +14,8 @@ function Home(props) {
 			for (let j = 0; j < mats.length; j++) {
 				//if a material matches required material and is in stock
 				if (
-					mats[j][0].type === pcs.reqMats[i].type &&
-					mats[j][0].stock >= pcs.reqMats[i].num
+					mats[j][0].type === reqMats[i].type &&
+					mats[j][0].stock >= reqMats[i].num
 				) {
 					//increment available materials
 					availMats += 1;
@@ -28,8 +28,8 @@ function Home(props) {
 			for (let j = 0; j < comps.length; j++) {
 				//if a component matches required material and is in stock
 				if (
-					comps[j][0].type === pcs.reqMats[i].type &&
-					comps[j][0].stock >= pcs.reqMats[i].num
+					comps[j][0].type === reqMats[i].type &&
+					comps[j][0].stock >= reqMats[i].num
 				) {
 					//increment available materials
 					availMats += 1;
@@ -56,8 +56,8 @@ function Home(props) {
 				for (let j = 0; j < comps.length; j++) {
 					//if a component matches required material and is in stock
 					if (
-						comps[j][0].type === pcs.reqMats[i].type &&
-						comps[j][0].stock >= pcs.reqMats[i].num
+						comps[j][0].type === reqMats[i].type &&
+						comps[j][0].stock >= reqMats[i].num
 					) {
 						//decrement current component by required amount
 						let setComp = comps[j][1];
@@ -78,7 +78,7 @@ function Home(props) {
 		}
 	}
 	function newGame() {
-		localStorage.setItem("save-state", undefined);
+		localStorage.setItem("save-state", { undefined });
 		window.location.reload();
 	}
 	function retire() {
