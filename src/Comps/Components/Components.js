@@ -4,6 +4,7 @@ import Component from "./Component";
 function Components(props) {
 	const { images, comps } = props;
 	let image = { undefined };
+	console.log(images);
 	let components = comps.map(comp => {
 		//assign image depending on comp type
 		switch (comp[0].type) {
@@ -26,7 +27,7 @@ function Components(props) {
 				image = images[5];
 				break;
 			default:
-				image = undefined;
+				image = images[5];
 				break;
 		}
 		return (

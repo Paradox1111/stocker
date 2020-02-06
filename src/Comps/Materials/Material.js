@@ -8,12 +8,16 @@ function Material(props) {
 	const setMoney = props.money[1];
 
 	function buyOne() {
-		setMat({ type: type, stock: stock + 1, price: price });
-		setMoney(money - price);
+		if (money > price) {
+			setMat({ type: type, stock: stock + 1, price: price });
+			setMoney(money - price);
+		}
 	}
 	function buyFive() {
-		setMat({ type: type, stock: stock + 5, price: price });
-		setMoney(money - price * 5);
+		if (money > price * 5) {
+			setMat({ type: type, stock: stock + 5, price: price });
+			setMoney(money - price * 5);
+		}
 	}
 	return (
 		<div className="Material">
